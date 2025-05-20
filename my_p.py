@@ -411,7 +411,7 @@ def make_graph(results, title, xlabel, ylabel='Hit Rate'):
 def big_test():
     """Try lots of diffrent setups to see what works best"""
     csizes = [1024, 4096, 16384]  # 1KB, 4KB, 16KB
-    bsizes = [32, 64, 128]
+    bsizes = [32, 64, 128, 256]
     assocs = [1, 2, 4, -1]  # 1 = direct-mapped, -1 = fully associativ
     rules = ['LRU', 'FIFO', 'LFU', 'RANDOM']
     patterns = ['sequential', 'random', 'loop', 'locality']
@@ -487,13 +487,13 @@ def big_test():
             assoc_str = f"{assoc}-Way Set Associativ"
         
         table_data.append([
-    pattern.capitalize(),
-    csize,
-    bsize,
-    assoc_str,
-    rule,
-    f"{best_rate:.4f}"
-    ])
+            pattern.capitalize(),
+            csize,
+            bsize,
+            assoc_str,
+            rule,
+            f"{best_rate:.4f}"
+        ])
 
     # Print the table
     print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
@@ -507,7 +507,7 @@ def main():
     parser.add_argument('--block-size', type=int, default=64, help='how big are blocks in bytes')
     parser.add_argument('--associativity', type=int, default=2, help='associativty (1=direct, -1=full)')
     parser.add_argument('--policy', type=str, default='LRU', choices=['LRU', 'FIFO', 'LFU', 'RANDOM'], help='replacement rule')
-    parser.add_argument('--num-accesses', type=int, default=10000, help='how many memory thingys to do')
+    parser.add_argument('--num-accesses', type=int, default=10000, help='number of memory accesses to simulate')
     parser.add_argument('--address-range', type=int, default=32768, help='how big is memory')
     parser.add_argument('--pattern', type=str, default='random', choices=['sequential', 'random', 'loop', 'locality'], help='memory access pattern')
     parser.add_argument('--mode', type=str, default='single', choices=['single', 'compare-policies', 'compare-associativities', 'compare-block-sizes', 'comprehensive'], help='what type of test to do')
