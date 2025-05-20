@@ -502,7 +502,7 @@ def big_test():
 
 
 def main():
-    parser = argparse.ArgumentParser(description='My Cache Simulater')
+    parser = argparse.ArgumentParser(description='Cache Simulater')
     parser.add_argument('--cache-size', type=int, default=8192, help='how big is cache in bytes')
     parser.add_argument('--block-size', type=int, default=64, help='how big are blocks in bytes')
     parser.add_argument('--associativity', type=int, default=2, help='associativty (1=direct, -1=full)')
