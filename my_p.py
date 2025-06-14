@@ -447,7 +447,7 @@ def big_test():
                         # Make simulator
                         simulator = CacheSim(csize, bsize, assoc, rule, show_stats=False)
                         s = f"{Colors.WHITE},{Colors.CYAN}"
-                        print(f"{Colors.YELLOW}TOTAL TESTING {Colors.WHITE}[{Colors.CYAN}cache size={csize} {s} block size={bsize} {s} associativity={assoc} {s} replacement rule={rule} {s} pattern={pattern}{Colors.WHITE}]: {Colors.GREEN}{counter}{Colors.RESET}" , end='\r')
+                        print(f"{Colors.YELLOW}TOTAL TESTING {Colors.WHITE}[{Colors.CYAN}cache size={str(csize).center(6)} {s} block size={str(bsize).center(3)} {s} associativity={str(assoc).center(2)} {s} replacement rule={str(rule).center(6)} {s} pattern={str(pattern).center(10)}{Colors.WHITE}]: {Colors.GREEN}{str(counter).center(4)}{Colors.RESET}" , end='\r')
                         counter += 1
 
                         # Test it
