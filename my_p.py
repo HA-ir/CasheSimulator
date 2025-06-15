@@ -186,18 +186,18 @@ class CacheSim:
             return 0
         return self.misses / self.accesses
     
-    def start_over(self):
-        """erase everything to start again"""
-        self.hits = 0
-        self.misses = 0
-        self.accesses = 0
-        self.time = 0
-        self.good_addresses = []
-        self.bad_addresses = []
-        self.all_addresses = []
+    # def start_over(self):
+    #     """erase everything to start again"""
+    #     self.hits = 0
+    #     self.misses = 0
+    #     self.accesses = 0
+    #     self.time = 0
+    #     self.good_addresses = []
+    #     self.bad_addresses = []
+    #     self.all_addresses = []
         
-        # make empty cache again
-        self.cache = [[] for _ in range(self.num_sets)]
+    #     # make empty cache again
+    #     self.cache = [[] for _ in range(self.num_sets)]
     
     def show_results(self):
         """showing the results"""
@@ -213,9 +213,7 @@ class CacheSim:
         print(f"{s}Miss Rate: {Colors.WHITE}{self.get_miss_rate():.4f}{Colors.RESET}")
 
     def make_picture(self, save_to=None):
-        """
-        Make a picture of our memory accesses
-        """
+        """Make a picture of our memory accesses"""
         plt.figure(figsize=(12, 6))
         
         # Show all memory lookups
@@ -554,3 +552,12 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# python3 my_p.py --cache-size 4096 --block-size 64 --associativity 1 --policy LRU --pattern random
+# python3 my_p.py --cache-size 8192 --block-size 128 --associativity 4 --policy LRU --pattern sequential
+# python3 my_p.py --cache-size 2048 --block-size 32 --associativity -1 --policy FIFO --pattern locality
+# python3 my_p.py --mode compare-associativities --cache-size 8192 --block-size 64 --policy LRU --pattern sequential
+# python3 my_p.py --mode comprehensive
+# python3 my_p.py --mode compare-policies
+# python3 my_p.py --mode compare-associativities
